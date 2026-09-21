@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+assets/audio/*.mp3
+assets/audio/*.m4a

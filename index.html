@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Happy Birthday 🎂</title>
+<meta name="description" content="An interactive birthday card." />
+
+<!-- Fonts (CDN) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Dancing+Script:wght@500;600;700&family=Patrick+Hand&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     DECOR LAYER — gingham corners, ribbons, doodles
+     ============================================================ -->
+<div id="decor" aria-hidden="true">
+  <div class="gingham g-tl"></div>
+  <div class="gingham g-br"></div>
+  <div class="gingham g-tr"></div>
+  <div class="gingham g-bl"></div>
+
+  <!-- looping ribbon corners -->
+  <svg class="decor-svg d-ribbon-l" viewBox="0 0 220 220" fill="none">
+    <path d="M6 96C46 74 92 96 76 132c-13 29-58 19-52-12C32 78 96 44 168 60" stroke="#ba181b" stroke-width="12" stroke-linecap="round"/>
+    <path d="M6 96C46 74 92 96 76 132c-13 29-58 19-52-12C32 78 96 44 168 60" stroke="#f6efe4" stroke-width="3" stroke-dasharray="7 9" stroke-linecap="round"/>
+    <path d="M150 34l18 26 30-6-16 28 20 22-32 2-8 30-22-22-28 12 6-31-24-18 30-12z" fill="#f6efe4" stroke="#ba181b" stroke-width="3"/>
+  </svg>
+  <svg class="decor-svg d-ribbon-r" viewBox="0 0 220 220" fill="none">
+    <path d="M6 96C46 74 92 96 76 132c-13 29-58 19-52-12C32 78 96 44 168 60" stroke="#ba181b" stroke-width="12" stroke-linecap="round"/>
+    <path d="M6 96C46 74 92 96 76 132c-13 29-58 19-52-12C32 78 96 44 168 60" stroke="#f6efe4" stroke-width="3" stroke-dasharray="7 9" stroke-linecap="round"/>
+  </svg>
+  <svg class="decor-svg d-ribbon-bl" viewBox="0 0 220 220" fill="none">
+    <path d="M6 96C46 74 92 96 76 132c-13 29-58 19-52-12C32 78 96 44 168 60" stroke="#ba181b" stroke-width="12" stroke-linecap="round"/>
+    <path d="M6 96C46 74 92 96 76 132c-13 29-58 19-52-12C32 78 96 44 168 60" stroke="#f6efe4" stroke-width="3" stroke-dasharray="7 9" stroke-linecap="round"/>
+  </svg>
+  <svg class="decor-svg d-ribbon-br" viewBox="0 0 220 220" fill="none">
+    <path d="M6 96C46 74 92 96 76 132c-13 29-58 19-52-12C32 78 96 44 168 60" stroke="#ba181b" stroke-width="12" stroke-linecap="round"/>
+    <path d="M6 96C46 74 92 96 76 132c-13 29-58 19-52-12C32 78 96 44 168 60" stroke="#f6efe4" stroke-width="3" stroke-dasharray="7 9" stroke-linecap="round"/>
+  </svg>
+
+  <!-- chunky doodle star, top-left -->
+  <svg class="decor-svg d-star-tl" viewBox="0 0 100 100"><path d="M50 4l13 30 32 3-24 22 7 33-28-17-28 17 7-33L5 37l32-3z" fill="#8d1116"/></svg>
+
+  <!-- chrome four-point sparkle, bottom-right -->
+  <svg class="decor-svg d-sparkle-br" viewBox="0 0 120 120">
+    <defs>
+      <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ffffff"/><stop offset="45%" stop-color="#d9dde2"/>
+        <stop offset="60%" stop-color="#8e949c"/><stop offset="100%" stop-color="#f3f5f7"/>
+      </linearGradient>
+    </defs>
+    <path d="M60 2c4 36 22 54 58 58-36 4-54 22-58 58-4-36-22-54-58-58 36-4 54-22 58-58z" fill="url(#chrome)" stroke="#1d1d1d" stroke-width="3"/>
+  </svg>
+
+  <!-- disco ball -->
+  <svg class="decor-svg d-disco" viewBox="0 0 120 150">
+    <path d="M60 4v26" stroke="#5a5a5a" stroke-width="4"/>
+    <circle cx="60" cy="86" r="54" fill="#9aa0a6"/>
+    <g opacity=".85" fill="none" stroke="#e8eaed" stroke-width="2.4">
+      <path d="M6 86h108M14 58h92M14 114h92M60 32v108M32 38c-8 28-8 68 0 96M88 38c8 28 8 68 0 96"/>
+    </g>
+    <circle cx="42" cy="66" r="12" fill="#f1f3f4" opacity=".55"/>
+    <path d="M14 140l16-16M106 140l-16-16" stroke="#8d1116" stroke-width="8" stroke-linecap="round"/>
+    <path d="M22 132l5 11 12 1-9 8 3 12-11-7-11 7 3-12-9-8 12-1z" fill="#8d1116"/>
+    <path d="M100 126l5 11 12 1-9 8 3 12-11-7-11 7 3-12-9-8 12-1z" fill="#8d1116"/>
+  </svg>
+
+  <!-- cocktail -->
+  <svg class="decor-svg d-cocktail" viewBox="0 0 110 150">
+    <path d="M12 16h86L55 70z" fill="#ba181b" stroke="#6a040f" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M55 70v54" stroke="#6a040f" stroke-width="6"/>
+    <path d="M26 132h58" stroke="#6a040f" stroke-width="7" stroke-linecap="round"/>
+    <path d="M86 8L64 46" stroke="#f6efe4" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="80" cy="26" r="9" fill="#f3b8b8" stroke="#6a040f" stroke-width="3"/>
+  </svg>
+
+  <!-- retro camera -->
+  <svg class="decor-svg d-camera" viewBox="0 0 150 110">
+    <rect x="6" y="18" width="132" height="80" rx="12" fill="#ba181b" stroke="#6a040f" stroke-width="4"/>
+    <rect x="38" y="6" width="44" height="16" rx="5" fill="#6a040f"/>
+    <circle cx="72" cy="58" r="27" fill="#f6efe4" stroke="#6a040f" stroke-width="4"/>
+    <circle cx="72" cy="58" r="14" fill="#6a040f"/>
+    <circle cx="118" cy="36" r="7" fill="#f6efe4"/>
+  </svg>
+
+  <!-- sketched hearts -->
+  <svg class="decor-svg d-heart-a" viewBox="0 0 40 36"><path d="M20 33S2 22 2 12C2 5 9 1 14 5l6 5 6-5c5-4 12 0 12 7 0 10-18 21-18 21z" fill="none" stroke="#ba181b" stroke-width="2.6" stroke-linejoin="round"/></svg>
+  <svg class="decor-svg d-heart-b" viewBox="0 0 40 36"><path d="M20 33S2 22 2 12C2 5 9 1 14 5l6 5 6-5c5-4 12 0 12 7 0 10-18 21-18 21z" fill="none" stroke="#ba181b" stroke-width="2.6" stroke-linejoin="round"/></svg>
+  <svg class="decor-svg d-heart-c" viewBox="0 0 40 36"><path d="M20 33S2 22 2 12C2 5 9 1 14 5l6 5 6-5c5-4 12 0 12 7 0 10-18 21-18 21z" fill="none" stroke="#ba181b" stroke-width="2.6" stroke-linejoin="round"/></svg>
+  <svg class="decor-svg d-heart-d" viewBox="0 0 40 36"><path d="M20 33S2 22 2 12C2 5 9 1 14 5l6 5 6-5c5-4 12 0 12 7 0 10-18 21-18 21z" fill="none" stroke="#ba181b" stroke-width="2.6" stroke-linejoin="round"/></svg>
+
+  <!-- bunting (cake screen only) -->
+  <svg id="bunting" viewBox="0 0 1200 180" preserveAspectRatio="none">
+    <path d="M0 26C150 92 300 96 430 56" stroke="#ba181b" stroke-width="3" fill="none"/>
+    <path d="M1200 26C1050 92 900 96 770 56" stroke="#ba181b" stroke-width="3" fill="none"/>
+    <g fill="none" stroke="#ba181b" stroke-width="3">
+      <path d="M20 40l30 6-12 36zM75 56l30 7-13 36zM132 70l30 6-14 36zM192 81l30 5-15 36zM253 88l30 4-16 36zM315 92l30 2-17 36zM377 92l30 0-18 36z"/>
+      <path d="M1180 40l-30 6 12 36zM1125 56l-30 7 13 36zM1068 70l-30 6 14 36zM1008 81l-30 5 15 36zM947 88l-30 4 16 36zM885 92l-30 2 17 36zM823 92l-30 0 18 36z"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ============================================================
+     STAGE
+     ============================================================ -->
+<main id="stage">
+
+  <!-- ---------- SCREEN 1 & 2 : CAKE ---------- -->
+  <section class="screen is-active" id="s-cake" data-screen="cake">
+    <h1 class="title-script">Happy Birthday</h1>
+    <p class="kicker">Make a wish!!</p>
+
+    <button class="pill tap" id="cakeBtn">
+      <span aria-hidden="true">≋</span><span id="cakeBtnLabel">Blow the candles</span>
+    </button>
+
+    <svg id="cakeArt" viewBox="0 0 320 300" fill="none" stroke="#ba181b" stroke-width="3.4"
+         stroke-linecap="round" stroke-linejoin="round" aria-label="A sketched birthday cake">
+      <g id="flameWrap">
+        <g id="flame">
+          <path d="M160 18c9 11 14 19 14 27a14 14 0 01-28 0c0-8 5-16 14-27z" fill="#ffb703" stroke="#e85d04" stroke-width="2.4"/>
+          <path d="M160 32c4 5 6 9 6 13a6 6 0 01-12 0c0-4 2-8 6-13z" fill="#fff3b0" stroke="none"/>
+        </g>
+      </g>
+      <g id="smoke" stroke="#9c9c9c" stroke-width="2.6" fill="none" opacity="0">
+        <path d="M160 40c-8 6 8 12 0 18s6 12 0 17"/>
+      </g>
+      <path d="M152 52h16v40h-16z" fill="#fdf6ec"/>
+      <path d="M152 62h16M152 74h16" stroke-width="2.2"/>
+      <path d="M96 116c0-9 29-16 64-16s64 7 64 16v30c0 9-29 16-64 16s-64-7-64-16z"/>
+      <path d="M96 116c0 9 29 16 64 16s64-7 64-16" stroke-width="2.6"/>
+      <path d="M100 124c8 10 16 2 24 10s16 0 24 9 16 0 24 9 16-1 24 8 16 0 24 8" stroke-width="2.2" opacity=".75"/>
+      <path d="M62 176c0-11 44-20 98-20s98 9 98 20v54c0 11-44 20-98 20s-98-9-98-20z"/>
+      <path d="M62 176c0 11 44 20 98 20s98-9 98-20" stroke-width="2.6"/>
+      <path d="M66 186c10 12 20 2 30 12s20 1 30 11 20 0 30 10 20 0 30 10 20 0 30 9 20-1 30 8" stroke-width="2.2" opacity=".75"/>
+      <path d="M78 206c14 16 28 16 42 0M120 206c14 16 28 16 42 0M162 206c14 16 28 16 42 0M204 206c14 16 28 16 38 0" stroke-width="2.6"/>
+      <path d="M40 248h240M52 258h216" stroke-width="3"/>
+      <path d="M130 136c-4-4-10-1-10 3 0 5 10 10 10 10s10-5 10-10c0-4-6-7-10-3z" stroke-width="2.2"/>
+      <path d="M192 136c-4-4-10-1-10 3 0 5 10 10 10 10s10-5 10-10c0-4-6-7-10-3z" stroke-width="2.2"/>
+    </svg>
+  </section>
+
+  <!-- ---------- SCREEN 3 : ACCEPT THE GIFT ---------- -->
+  <section class="screen" id="s-accept" data-screen="accept">
+    <h2 class="head-block">Please accept the gift</h2>
+
+    <img class="creature bobble" src="assets/images/bigeye.png" alt="A hopeful little creature with big glossy eyes" width="649" height="627">
+
+    <div class="choice-row">
+      <button class="btn-solid btn-yes tap" id="btnYes">Yes</button>
+      <button class="btn-solid btn-no tap" id="btnNo">No</button>
+    </div>
+  </section>
+
+  <!-- ---------- SCREEN 4 : GUILT ---------- -->
+  <section class="screen" id="s-guilt" data-screen="guilt">
+    <h2 class="head-block">Why did you click no!</h2>
+
+    <div class="creature sob">
+      <img src="assets/images/crying.png" alt="A crying little creature sitting in a puddle of tears" width="191" height="159">
+    </div>
+
+    <button class="btn-solid btn-try tap" id="btnTry">Try again</button>
+  </section>
+
+  <!-- ---------- SCREEN 5 : GIFT HUB ---------- -->
+  <section class="screen" id="s-hub" data-screen="hub">
+    <h2 class="hub-title">Choose Your Gifts</h2>
+    <div class="hub">
+
+      <!-- envelope with heart wax seal -->
+      <button class="gift-card" data-go="letter" aria-label="Open the letter">
+        <img src="assets/images/envelope.png" alt="A red envelope with a heart wax seal" width="205" height="227">
+      </button>
+
+      <!-- bouquet of red roses -->
+      <button class="gift-card" data-go="flowers" aria-label="See the flowers">
+        <img src="assets/images/bouquet.png" alt="A wrapped bouquet of red roses" width="283" height="339">
+      </button>
+
+      <!-- velvet gift box with puffy bow -->
+      <button class="gift-card" data-go="gift" aria-label="Open the gift box">
+        <img src="assets/images/giftbox.png" alt="A red velvet gift box with a bow" width="497" height="434">
+      </button>
+    </div>
+  </section>
+
+  <!-- ---------- SCREEN 6 : LETTER ---------- -->
+  <section class="screen" id="s-letter" data-screen="letter">
+    <button class="back tap" data-back>← Back</button>
+    <div class="corner-title">happy<span>birthday</span></div>
+
+    <div class="letter-stage">
+      <!-- real envelope photo sits behind the animated letter -->
+      <img class="envelope-back" src="assets/images/envelope.png" alt="A red envelope with a heart wax seal" width="205" height="227">
+
+      <article id="letterSheet">
+        <h3 class="letter-h">Happy Birthday</h3>
+        <p id="letterBody"><span id="letterText"></span><span id="caret">&nbsp;</span></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ---------- SCREEN 7 : FLOWERS ---------- -->
+  <section class="screen" id="s-flowers" data-screen="flowers">
+    <button class="back tap" data-back>← Back</button>
+
+    <div class="flowers-wrap">
+      <div class="flowers-left">
+        <p class="scribble">flowers for<em>my sweetheart!</em></p>
+        <span class="tiny-heart">♡</span>
+
+        <img class="creature shy" src="assets/images/shy.png" alt="A shy blushing creature holding its hands together" width="232" height="263">
+
+        <span class="badge badge-fav">Happy Birthday to one of my absolute favorite human</span>
+        <span class="badge badge-fan">i'm your #1 fan</span>
+      </div>
+
+      <div class="flowers-right">
+        <img src="assets/images/bouquet.png" alt="A wrapped bouquet of red roses" width="283" height="339">
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- SCREEN 8 & 9 : MUSIC + CARD ---------- -->
+  <section class="screen" id="s-gift" data-screen="gift">
+    <button class="back tap" data-back>← Back</button>
+    <div class="corner-title">happy<span>birthday</span></div>
+
+    <div class="duo">
+      <!-- LEFT : turntable + player -->
+      <div class="music-col">
+        <div class="vinyl-card">
+          <svg id="vinyl" viewBox="0 0 200 200" aria-hidden="true">
+            <g id="vinylDisc">
+              <circle cx="96" cy="100" r="84" fill="#141414"/>
+              <g fill="none" stroke="#3a3a3a" stroke-width="1.6">
+                <circle cx="96" cy="100" r="74"/><circle cx="96" cy="100" r="64"/>
+                <circle cx="96" cy="100" r="54"/><circle cx="96" cy="100" r="44"/>
+              </g>
+              <circle cx="96" cy="100" r="34" fill="#f6efe4"/>
+              <path d="M96 84c-7-8-20-3-20 8 0 11 20 24 20 24s20-13 20-24c0-11-13-16-20-8z" fill="#ba181b"/>
+              <circle cx="96" cy="100" r="3.6" fill="#141414"/>
+            </g>
+            <g class="tonearm">
+              <path d="M170 24l-66 72" stroke="#e8e6e2" stroke-width="7" stroke-linecap="round"/>
+              <circle cx="172" cy="22" r="10" fill="#d8d5d0"/>
+              <path d="M104 96l-10 12" stroke="#b9b6b1" stroke-width="10" stroke-linecap="round"/>
+            </g>
+          </svg>
+
+          <p class="vinyl-copy">And suddenly,<br>all the love<br>songs were about<b>you</b></p>
+        </div>
+
+        <div class="player" id="player">
+          <div class="art">🎵</div>
+          <div class="meta">
+            <div class="t">Until I Found You</div>
+            <div class="a">Stephen Sanchez</div>
+            <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <button id="playBtn" class="tap" aria-label="Play music">▶</button>
+        </div>
+
+        <p class="player-note">
+          <span id="trackNote">demo tune · </span>
+          <button id="pickFile" type="button">use your own mp3</button>
+          <input type="file" id="fileInput" accept="audio/*" hidden>
+        </p>
+        <!-- Drop your own file at assets/audio/song.mp3 and set the src below -->
+        <audio id="audio" loop preload="none"></audio>
+      </div>
+
+      <!-- RIGHT : flip card -->
+      <div class="flip-wrap">
+        <div class="flip" id="flipCard" role="button" tabindex="0" aria-label="Open the card">
+          <div class="face face-front">
+            <svg class="open-heart" viewBox="0 0 260 160">
+              <path d="M130 148S18 104 18 56C18 24 50 6 76 22l54 34 54-34c26-16 58 2 58 34 0 48-112 92-112 92z" fill="#fffdf7"/>
+              <path d="M130 140S30 100 30 58C30 32 56 18 78 32l52 32 52-32c22-14 48 0 48 26 0 42-100 82-100 82z" fill="none" stroke="#8d1116" stroke-width="2.6" stroke-dasharray="8 7"/>
+              <text x="130" y="86" text-anchor="middle" font-family="'Courier Prime',monospace" font-weight="700" font-size="24" fill="#1d1d1d" letter-spacing="1.5">OPEN</text>
+            </svg>
+          </div>
+
+          <div class="face face-back">
+            <img class="special-photo" src="assets/images/special-photo.jpg" alt="A photo of someone special">
+            <div class="photo-caption">
+              <span class="top">YOU AREEEEEEE</span>
+              <span class="bot">THE DIVAAAA! <span>✨</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="toast">byeee have a nice dayyy 💕✨</div>
+
+<!-- Confetti (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
