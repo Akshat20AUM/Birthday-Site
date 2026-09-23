@@ -153,97 +153,44 @@
     typeTimer = setTimeout(tick, 900);             // wait for the slide-up
   }
 
-  /* ---------- 7. MUSIC ----------
-     No audio file ships with this project. Out of the box the player plays a
-     short original piano loop built with the Web Audio API. To use a real
-     track you own: drop it at assets/audio/song.mp3 and set SONG below, or
-     click "use your own mp3" in the UI to load one from disk.              */
-  var SONG = '';                                   // e.g. 'assets/audio/song.mp3'
+ /* ---------- 7. MUSIC ---------- */
+  var SONG = 'assets/audio/song.mp3';
 
   var audioEl   = $('#audio');
   var playBtn   = $('#playBtn');
   var giftCol   = $('#player').parentElement;
-  var trackNote = $('#trackNote');
   var isPlaying = false;
-  var usingFile = false;
 
-  if (SONG) { audioEl.src = SONG; usingFile = true; trackNote.textContent = ''; }
-
-  // --- tiny Web Audio piano loop (original melody) ---
-  var ctx = null, loopTimer = null;
-  var MEL = [                                      // [semitones from C4, beats]
-    [7,1],[12,1],[11,1],[7,1],[9,2],[7,1],[4,1],
-    [5,1],[9,1],[12,1],[9,1],[7,2],[4,2],
-    [2,1],[7,1],[11,1],[9,1],[7,2],[12,2]
-  ];
-  var BPM = 78, BEAT = 60 / BPM;
-  var hz = function (semi) { return 261.63 * Math.pow(2, semi / 12); };
-
-  function note(freq, at, dur, peak) {
-    var osc = ctx.createOscillator(), g = ctx.createGain();
-    osc.type = 'triangle';
-    osc.frequency.value = freq;
-    g.gain.setValueAtTime(0.0001, at);
-    g.gain.exponentialRampToValueAtTime(peak, at + 0.02);
-    g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
-    osc.connect(g).connect(ctx.destination);
-    osc.start(at); osc.stop(at + dur + 0.05);
-  }
-
-  function scheduleLoop() {
-    var t = ctx.currentTime + 0.08, bar = 0;
-    MEL.forEach(function (n) {
-      note(hz(n[0]), t, n[1] * BEAT * 0.9, 0.16);            // melody
-      if (bar % 2 === 0) note(hz(n[0] - 12), t, BEAT * 1.6, 0.09); // bass
-      t += n[1] * BEAT; bar++;
-    });
-    var total = MEL.reduce(function (a, n) { return a + n[1]; }, 0) * BEAT;
-    loopTimer = setTimeout(function () {
-      if (isPlaying && !usingFile) scheduleLoop();
-    }, total * 1000 - 60);
-  }
-
-  function startDemo() {
-    if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
-    if (ctx.state === 'suspended') ctx.resume();
-    scheduleLoop();
-  }
-  function stopDemo() {
-    clearTimeout(loopTimer);
-    if (ctx) ctx.suspend();
-  }
+  // Set the audio track
+  audioEl.src = SONG;
 
   function setPlayState(on) {
     isPlaying = on;
     giftCol.classList.toggle('playing', on);
-    $('#s-gift').classList.toggle('playing', on);
+    var sGift = $('#s-gift');
+    if (sGift) sGift.classList.toggle('playing', on);
     playBtn.textContent = on ? '❚❚' : '▶';
     playBtn.classList.toggle('is-playing', on);
     playBtn.setAttribute('aria-label', on ? 'Pause music' : 'Play music');
   }
 
   function playAudio() {
-    if (usingFile) { audioEl.play().catch(function () {}); }
-    else { startDemo(); }
+    audioEl.play().catch(function () {});
     setPlayState(true);
   }
+
   function pauseAudio() {
     if (!isPlaying) return;
-    if (usingFile) audioEl.pause(); else stopDemo();
+    audioEl.pause();
     setPlayState(false);
   }
 
-  playBtn.addEventListener('click', function () { isPlaying ? pauseAudio() : playAudio(); });
+  playBtn.addEventListener('click', function () {
+    isPlaying ? pauseAudio() : playAudio();
+  });
 
-  $('#pickFile').addEventListener('click', function () { $('#fileInput').click(); });
-  $('#fileInput').addEventListener('change', function (e) {
-    var f = e.target.files && e.target.files[0];
-    if (!f) return;
-    pauseAudio();
-    usingFile = true;
-    audioEl.src = URL.createObjectURL(f);
-    trackNote.textContent = f.name.replace(/\.[^.]+$/, '') + ' · ';
-    playAudio();
+  audioEl.addEventListener('ended', function () {
+    setPlayState(false);
   });
 
   /* ---------- 8. FLIP CARD ---------- */

@@ -212,7 +212,7 @@
 
     <div class="flowers-wrap">
       <div class="flowers-left">
-        <p class="scribble">flowers for<em>my sweetheart!</em></p>
+        <p class="scribble">flowers for<em>The Bhonduu!</em></p>
         <span class="tiny-heart">♡</span>
 
         <img class="creature shy" src="assets/images/shy.png" alt="A shy blushing creature holding its hands together" width="232" height="263">
@@ -254,27 +254,24 @@
             </g>
           </svg>
 
-          <p class="vinyl-copy">And suddenly,<br>all the love<br>songs were about<b>you</b></p>
-        </div>
+          <p class="vinyl-copy">And suddenly,<br>the<br>songs were about<b>you</b></p>
+</div>
 
-        <div class="player" id="player">
-          <div class="art">🎵</div>
-          <div class="meta">
-            <div class="t">Until I Found You</div>
-            <div class="a">Stephen Sanchez</div>
-            <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          </div>
-          <button id="playBtn" class="tap" aria-label="Play music">▶</button>
-        </div>
+<div class="player" id="player">
+  <div class="art">
+    <img src="assets/images/cover.jpg" alt="Song Cover" class="cover-art">
+  </div>
+  <div class="meta">
+    <div class="t">Lover's Rock</div>
+    <div class="a">TV Girl</div>
+    <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <button id="playBtn" class="tap" aria-label="Play music">▶</button>
+</div>
 
-        <p class="player-note">
-          <span id="trackNote">demo tune · </span>
-          <button id="pickFile" type="button">use your own mp3</button>
-          <input type="file" id="fileInput" accept="audio/*" hidden>
-        </p>
-        <!-- Drop your own file at assets/audio/song.mp3 and set the src below -->
-        <audio id="audio" loop preload="none"></audio>
-      </div>
+<!-- Audio element pointing directly to your song -->
+<audio id="audio" src="assets/audio/song.mp3" loop preload="auto"></audio>
+</div>
 
       <!-- RIGHT : flip card -->
       <div class="flip-wrap">
